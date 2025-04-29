@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+.palm-leaf {
+  animation: sway 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.palm-leaf:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.palm-leaf:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+}
