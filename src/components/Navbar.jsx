@@ -6,7 +6,7 @@ import {
   XMarkIcon,
   ChevronDownIcon,
   BookOpenIcon,
-  PlayIcon
+  PlayIcon,
 } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
@@ -66,14 +66,14 @@ const Navbar = () => {
       name: "Read",
       path: "/read",
       description: "Daily readings and devotionals",
-      icon: BookOpenIcon
+      icon: BookOpenIcon,
     },
     {
       name: "Watch",
       path: "/watch",
       description: "Stream services and events",
-      icon: PlayIcon
-    }
+      icon: PlayIcon,
+    },
   ];
 
   const navItems = [
