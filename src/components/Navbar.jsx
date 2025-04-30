@@ -5,6 +5,8 @@ import {
   Bars3Icon,
   XMarkIcon,
   ChevronDownIcon,
+  BookOpenIcon,
+  PlayIcon
 } from "@heroicons/react/24/outline";
 
 const Navbar = () => {
@@ -20,7 +22,10 @@ const Navbar = () => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsMinistryOpen(false);
       }
-      if (learnDropdownRef.current && !learnDropdownRef.current.contains(event.target)) {
+      if (
+        learnDropdownRef.current &&
+        !learnDropdownRef.current.contains(event.target)
+      ) {
         setIsLearnOpen(false);
       }
     };
@@ -57,8 +62,18 @@ const Navbar = () => {
   ];
 
   const learnItems = [
-    { name: "Read", path: "/read", description: "Daily readings and devotionals" },
-    { name: "Watch", path: "/watch", description: "Stream services and events" }
+    {
+      name: "Read",
+      path: "/read",
+      description: "Daily readings and devotionals",
+      icon: BookOpenIcon
+    },
+    {
+      name: "Watch",
+      path: "/watch",
+      description: "Stream services and events",
+      icon: PlayIcon
+    }
   ];
 
   const navItems = [
@@ -95,14 +110,24 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
                 {navItems.map((item) => (
-                  <div 
-                    key={item.name} 
-                    className="relative" 
-                    ref={item.name === "Ministries" ? dropdownRef : item.name === "Learn" ? learnDropdownRef : null}
+                  <div
+                    key={item.name}
+                    className="relative"
+                    ref={
+                      item.name === "Ministries"
+                        ? dropdownRef
+                        : item.name === "Learn"
+                        ? learnDropdownRef
+                        : null
+                    }
                   >
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 17,
+                      }}
                     >
                       <Link
                         to={item.path}
@@ -127,9 +152,18 @@ const Navbar = () => {
                         }}
                       >
                         <span className="relative z-10">{item.name}</span>
-                        {(item.name === "Ministries" || item.name === "Learn") && (
+                        {(item.name === "Ministries" ||
+                          item.name === "Learn") && (
                           <motion.div
-                            animate={{ rotate: (item.name === "Ministries" ? isMinistryOpen : isLearnOpen) ? 180 : 0 }}
+                            animate={{
+                              rotate: (
+                                item.name === "Ministries"
+                                  ? isMinistryOpen
+                                  : isLearnOpen
+                              )
+                                ? 180
+                                : 0,
+                            }}
                             transition={{ duration: 0.3 }}
                           >
                             <ChevronDownIcon className="ml-1 h-4 w-4" />
@@ -294,10 +328,15 @@ const Navbar = () => {
                       className="group bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 block"
                       onClick={() => setIsLearnOpen(false)}
                     >
-                      <h3 className="text-white font-medium text-lg group-hover:text-gray-200 transition-colors">
-                        {item.name}
-                      </h3>
-                      <p className="text-gray-400 text-sm mt-1">{item.description}</p>
+                      <div className="flex items-center gap-3">
+                        <item.icon className="h-6 w-6 text-gray-400 group-hover:text-white transition-colors" />
+                        <h3 className="text-white font-medium text-lg group-hover:text-gray-200 transition-colors">
+                          {item.name}
+                        </h3>
+                      </div>
+                      <p className="text-gray-400 text-sm mt-1">
+                        {item.description}
+                      </p>
                     </Link>
                   </motion.div>
                 ))}
