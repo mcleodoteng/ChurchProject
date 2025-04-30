@@ -58,8 +58,7 @@ const Events = () => {
       time: "9:00 AM & 11:30 AM",
       description:
         "Join us for a special Easter celebration with worship and fellowship.",
-      image:
-        "/src/assets/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+      image: "/public/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
     },
     {
       id: 2,
@@ -68,8 +67,7 @@ const Events = () => {
       time: "Various Times",
       description:
         "Three days of worship, teaching, and community for young people.",
-      image:
-        "/src/assets/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+      image: "/public/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
     },
     {
       id: 3,
@@ -79,7 +77,7 @@ const Events = () => {
       description:
         "Serving our local community through various outreach programs.",
       image:
-        "/src/assets/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+        "/public/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
     },
   ];
 
@@ -105,10 +103,10 @@ const Events = () => {
   ];
 
   const galleryImages = [
-    "/src/assets/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
-    "/src/assets/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
-    "/src/assets/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
-    "/src/assets/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+    "/public/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+    "/public/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+    "/public/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+    "/public/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
     // Add more images as needed
   ];
 
@@ -159,20 +157,15 @@ const Events = () => {
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
-      <section className="relative h-[50vh] bg-black text-white overflow-hidden">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute inset-0"
-        >
+      <section className="relative h-[60vh] bg-black">
+        <div className="absolute inset-0">
           <img
-            src="/src/assets/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
+            src="/public/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
             alt="Church events"
             className="w-full h-full object-cover opacity-50"
           />
-        </motion.div>
-        <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
+        </div>
+        <div className="relative text-white z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
           <motion.h1
             initial={{ y: 30, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

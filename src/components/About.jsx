@@ -124,9 +124,9 @@ const About = () => {
   ];
 
   const sliderImages = [
-    "/src/assets/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
-    "/src/assets/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
-    "/src/assets/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+    "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+    "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+    "/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -150,7 +150,7 @@ const About = () => {
           className="absolute inset-0"
         >
           <img
-            src="/src/assets/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
+            src="/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
             alt="Church gathering"
             className="w-full h-full object-cover opacity-50"
           />

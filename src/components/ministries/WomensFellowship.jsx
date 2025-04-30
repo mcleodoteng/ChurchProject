@@ -43,21 +43,21 @@ const WomensFellowship = () => {
       description: "Weekly in-depth study of God's Word",
       schedule: "Every Wednesday",
       time: "10:00 AM & 7:00 PM",
-      image: "/images/ministries/women.jpg",
+      image: "/public/images/ministries/women.jpg",
     },
     {
       title: "Prayer Circle",
       description: "Monthly gathering for prayer and intercession",
       schedule: "First Friday",
       time: "6:30 PM",
-      image: "/images/ministries/women.jpg",
+      image: "/public/images/ministries/women.jpg",
     },
     {
       title: "Mentorship Program",
       description: "One-on-one discipleship and spiritual guidance",
       schedule: "Flexible Schedule",
       time: "By Appointment",
-      image: "/images/ministries/women.jpg",
+      image: "/public/images/ministries/women.jpg",
     },
   ];
 
@@ -83,7 +83,7 @@ const WomensFellowship = () => {
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-rose-500/90 to-purple-600/90" />
             <img
-              src="/images/ministries/women.jpg"
+              src="/public/images/ministries/women.jpg"
               alt="Living Spring"
               className="w-full h-full object-cover"
             />

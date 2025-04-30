@@ -42,14 +42,14 @@ const YouthMinistry = () => {
       age: 17,
       quote:
         "This youth ministry has helped me grow in my faith and find true friendships.",
-      image: "/images/ministries/youth.jpg",
+      image: "/public/images/ministries/youth.jpg",
     },
     {
       name: "Michael R.",
       age: 19,
       quote:
         "I've learned so much about leadership and serving others through our community projects.",
-      image: "/images/ministries/youth.jpg",
+      image: "/public/images/ministries/youth.jpg",
     },
   ];
 
@@ -61,7 +61,7 @@ const YouthMinistry = () => {
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-pink-500/90" />
             <img
-              src="/images/ministries/youth.jpg"
+              src="/public/images/ministries/youth.jpg"
               alt="Overcomers Ministry"
               className="w-full h-full object-cover"
             />
@@ -73,9 +73,7 @@ const YouthMinistry = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-7xl font-bold mb-6">
-              Overcomers
-            </h1>
+            <h1 className="text-6xl md:text-7xl font-bold mb-6">Overcomers</h1>
             <p className="text-xl md:text-2xl max-w-2xl mx-auto">
               Empowering young people to live boldly for Christ
             </p>

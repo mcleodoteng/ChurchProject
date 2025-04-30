@@ -68,7 +68,7 @@ const MensFellowship = () => {
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-indigo-800/90" />
             <img
-              src="/images/ministries/men.jpg"
+              src="/public/images/ministries/men.jpg"
               alt="River of Life"
               className="w-full h-full object-cover"
             />

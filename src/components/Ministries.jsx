@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   MagnifyingGlassIcon,
   PhoneIcon,
@@ -14,40 +14,40 @@ const ministryData = [
   {
     name: "Overcomers",
     description:
-      "A vibrant community for young people aged 13-25, focusing on spiritual growth, fellowship, and leadership development.",
+      "A vibrant community of believers, focusing on spiritual growth, fellowship, and leadership development.",
     meetingTime: "Saturdays at 4:00 PM",
     leader: "John Smith",
-    image: "/images/ministries/youth.jpg",
+    image: "/public/images/ministries/youth.jpg",
     color: "from-purple-500 to-pink-500",
     icon: "🌟",
   },
   {
     name: "River of Life",
     description:
-      "Building strong Christian men through Bible study, prayer, and community service.",
+      "Building strong Christian communities through Bible study, prayer, and community service.",
     meetingTime: "First Saturday of every month at 8:00 AM",
     leader: "David Johnson",
-    image: "/images/ministries/men.jpg",
+    image: "/public/images/ministries/men.jpg",
     color: "from-blue-500 to-indigo-500",
     icon: "⚔️",
   },
   {
     name: "Living Spring",
     description:
-      "Empowering women through spiritual growth, mentorship, and community outreach.",
+      "Empowering through spiritual growth, mentorship, and community outreach.",
     meetingTime: "Second Saturday of every month at 9:00 AM",
     leader: "Sarah Williams",
-    image: "/images/ministries/women.jpg",
+    image: "/public/images/ministries/women.jpg",
     color: "from-rose-400 to-pink-500",
     icon: "💝",
   },
   {
     name: "Faithline Generation",
     description:
-      "Supporting college students in their faith journey through fellowship, Bible study, and mentorship.",
+      "Supporting students in their faith journey through fellowship and Bible study.",
     meetingTime: "Fridays at 6:00 PM",
     leader: "Michael Brown",
-    image: "/images/ministries/campus.jpg",
+    image: "/public/images/ministries/campus.jpg",
     color: "from-emerald-400 to-cyan-500",
     icon: "🎓",
   },
@@ -55,6 +55,22 @@ const ministryData = [
 
 const MinistryCard = ({ ministry, index }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+
+  const getMinistryPath = (name) => {
+    switch (name) {
+      case "Overcomers":
+        return "/ministries/youth";
+      case "River of Life":
+        return "/ministries/men";
+      case "Living Spring":
+        return "/ministries/women";
+      case "Faithline Generation":
+        return "/ministries/campus";
+      default:
+        return "/ministries";
+    }
+  };
 
   return (
     <motion.div
@@ -116,6 +132,7 @@ const MinistryCard = ({ ministry, index }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className={`mt-6 w-full py-3 px-4 rounded-xl font-semibold text-white bg-gradient-to-r ${ministry.color} hover:shadow-lg transition-all duration-300`}
+              onClick={() => navigate(getMinistryPath(ministry.name))}
             >
               Join Ministry
             </motion.button>
@@ -181,6 +198,7 @@ const Ministries = () => {
           ))}
         </div>
       </div>
+      <br />
 
       {/* Footer */}
       <footer className="bg-black text-white py-16">

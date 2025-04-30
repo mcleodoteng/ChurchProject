@@ -14,10 +14,18 @@ const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const backgroundImages = [
-    "/src/assets/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
-    "/src/assets/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
-    "/src/assets/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
-    "/src/assets/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+    "/public/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+    "/public/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+    "/public/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+    "/public/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+  ];
+
+  // Slider images for the about section
+  const sliderImages = [
+    "/public/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+    "/public/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+    "/public/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+    "/public/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
   ];
 
   const nextSlide = () => {
