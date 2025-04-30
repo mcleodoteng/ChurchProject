@@ -10,13 +10,18 @@ import {
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinistryOpen, setIsMinistryOpen] = useState(false);
+  const [isLearnOpen, setIsLearnOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const learnDropdownRef = useRef(null);
 
-  // Close dropdown when clicking outside
+  // Close dropdowns when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsMinistryOpen(false);
+      }
+      if (learnDropdownRef.current && !learnDropdownRef.current.contains(event.target)) {
+        setIsLearnOpen(false);
       }
     };
 
@@ -51,10 +56,16 @@ const Navbar = () => {
     },
   ];
 
+  const learnItems = [
+    { name: "Read", path: "/read", description: "Daily readings and devotionals" },
+    { name: "Watch", path: "/watch", description: "Stream services and events" }
+  ];
+
   const navItems = [
     { name: "Home", path: "/" },
     { name: "Ministries", path: "/ministries" },
     { name: "About", path: "/about" },
+    { name: "Learn", path: "#" },
     { name: "Events", path: "/events" },
     { name: "Give", path: "/give" },
   ];
@@ -84,18 +95,14 @@ const Navbar = () => {
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
                 {navItems.map((item) => (
-                  <div
-                    key={item.name}
-                    className="relative"
-                    ref={item.name === "Ministries" ? dropdownRef : null}
+                  <div 
+                    key={item.name} 
+                    className="relative" 
+                    ref={item.name === "Ministries" ? dropdownRef : item.name === "Learn" ? learnDropdownRef : null}
                   >
                     <motion.div
                       whileHover={{ scale: 1.05 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 17,
-                      }}
+                      transition={{ type: "spring", stiffness: 400, damping: 17 }}
                     >
                       <Link
                         to={item.path}
@@ -103,18 +110,26 @@ const Navbar = () => {
                         onClick={() => {
                           if (item.name === "Ministries") {
                             setIsMinistryOpen(!isMinistryOpen);
+                            setIsLearnOpen(false);
+                          } else if (item.name === "Learn") {
+                            setIsLearnOpen(!isLearnOpen);
+                            setIsMinistryOpen(false);
                           }
                         }}
                         onMouseEnter={() => {
                           if (item.name === "Ministries") {
                             setIsMinistryOpen(true);
+                            setIsLearnOpen(false);
+                          } else if (item.name === "Learn") {
+                            setIsLearnOpen(true);
+                            setIsMinistryOpen(false);
                           }
                         }}
                       >
                         <span className="relative z-10">{item.name}</span>
-                        {item.name === "Ministries" && (
+                        {(item.name === "Ministries" || item.name === "Learn") && (
                           <motion.div
-                            animate={{ rotate: isMinistryOpen ? 180 : 0 }}
+                            animate={{ rotate: (item.name === "Ministries" ? isMinistryOpen : isLearnOpen) ? 180 : 0 }}
                             transition={{ duration: 0.3 }}
                           >
                             <ChevronDownIcon className="ml-1 h-4 w-4" />
@@ -183,6 +198,25 @@ const Navbar = () => {
                         ))}
                       </motion.div>
                     )}
+                    {item.name === "Learn" && (
+                      <motion.div
+                        initial={{ height: 0 }}
+                        animate={{ height: "auto" }}
+                        exit={{ height: 0 }}
+                        className="pl-4 space-y-1 mt-2"
+                      >
+                        {learnItems.map((learnItem) => (
+                          <Link
+                            key={learnItem.name}
+                            to={learnItem.path}
+                            className="text-gray-400 hover:text-white block px-3 py-2 text-sm transition-all duration-300 hover:pl-6"
+                            onClick={() => setIsOpen(false)}
+                          >
+                            {learnItem.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
                   </Link>
                 ))}
               </div>
@@ -228,6 +262,42 @@ const Navbar = () => {
                       <p className="text-gray-400 text-sm mt-1">
                         {ministry.description}
                       </p>
+                    </Link>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Learn Dropdown */}
+      <AnimatePresence>
+        {isLearnOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className="fixed top-20 left-0 w-full bg-black/95 backdrop-blur-sm z-40"
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {learnItems.map((item) => (
+                  <motion.div
+                    key={item.name}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Link
+                      to={item.path}
+                      className="group bg-gray-800 rounded-lg p-4 hover:bg-gray-700 transition-all duration-300 block"
+                      onClick={() => setIsLearnOpen(false)}
+                    >
+                      <h3 className="text-white font-medium text-lg group-hover:text-gray-200 transition-colors">
+                        {item.name}
+                      </h3>
+                      <p className="text-gray-400 text-sm mt-1">{item.description}</p>
                     </Link>
                   </motion.div>
                 ))}

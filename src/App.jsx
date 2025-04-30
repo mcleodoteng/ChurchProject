@@ -5,6 +5,8 @@ import Ministries from "./components/Ministries";
 import About from "./components/About";
 import Events from "./components/Events";
 import Give from "./components/Give";
+import Read from "./components/Read";
+import Watch from "./components/Watch";
 import YouthMinistry from "./components/ministries/YouthMinistry";
 import MensFellowship from "./components/ministries/MensFellowship";
 import WomensFellowship from "./components/ministries/WomensFellowship";
@@ -31,6 +33,14 @@ function App() {
           }
         />
         <Route
+          path="/ministries"
+          element={
+            <Layout>
+              <Ministries />
+            </Layout>
+          }
+        />
+        <Route
           path="/about"
           element={
             <Layout>
@@ -39,14 +49,37 @@ function App() {
           }
         />
         <Route
-          path="/ministries"
+          path="/events"
           element={
             <Layout>
-              <Ministries />
+              <Events />
             </Layout>
           }
         />
-        {/* Individual Ministry Routes */}
+        <Route
+          path="/give"
+          element={
+            <Layout>
+              <Give />
+            </Layout>
+          }
+        />
+        <Route
+          path="/read"
+          element={
+            <Layout>
+              <Read />
+            </Layout>
+          }
+        />
+        <Route
+          path="/watch"
+          element={
+            <Layout>
+              <Watch />
+            </Layout>
+          }
+        />
         <Route
           path="/ministries/youth"
           element={
@@ -76,22 +109,6 @@ function App() {
           element={
             <Layout>
               <CampusMinistry />
-            </Layout>
-          }
-        />
-        <Route
-          path="/events"
-          element={
-            <Layout>
-              <Events />
-            </Layout>
-          }
-        />
-        <Route
-          path="/give"
-          element={
-            <Layout>
-              <Give />
             </Layout>
           }
         />
