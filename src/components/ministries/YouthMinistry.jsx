@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "../Home";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -60,9 +62,9 @@ const YouthMinistry = () => {
         <div className="absolute inset-0">
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-pink-500/90" />
-            <img
-              src="/public/images/ministries/youth.jpg"
-              alt="Overcomers Ministry"
+            <OptimizedImage
+              src="/images/ministries/youth.jpg"
+              alt="Youth Ministry"
               className="w-full h-full object-cover"
             />
           </div>
@@ -134,31 +136,30 @@ const YouthMinistry = () => {
             Youth Stories
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.map((testimonial) => (
               <motion.div
                 key={testimonial.name}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="bg-white/10 backdrop-blur-lg rounded-2xl p-6"
+                whileHover={{ scale: 1.02 }}
+                className="bg-white rounded-lg shadow-lg overflow-hidden p-6"
               >
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-16 h-16 rounded-full overflow-hidden">
-                    <img
+                <div className="flex items-center mb-4">
+                  <div className="flex-shrink-0 h-16 w-16 rounded-full overflow-hidden">
+                    <OptimizedImage
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div>
-                    <h3 className="font-bold text-lg">
-                      {testimonial.name}, {testimonial.age}
+                  <div className="ml-4">
+                    <h3 className="font-semibold text-lg">
+                      {testimonial.name}
                     </h3>
-                    <p className="italic mt-2">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </p>
+                    <p className="text-gray-600">{testimonial.age} years old</p>
                   </div>
                 </div>
+                <blockquote className="text-gray-700">
+                  "{testimonial.quote}"
+                </blockquote>
               </motion.div>
             ))}
           </div>

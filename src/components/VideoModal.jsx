@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon, ShareIcon } from "@heroicons/react/24/outline";
+import { OptimizedImage } from "./Home";
 
 const VideoModal = ({ video, isOpen, onClose }) => {
   if (!video) return null;
@@ -86,10 +87,10 @@ const VideoModal = ({ video, isOpen, onClose }) => {
                   <p className="text-gray-600 mb-4">{video.description}</p>
 
                   <div className="mt-4 flex items-center">
-                    <img
+                    <OptimizedImage
                       src="/images/ministries/logo.jpg"
                       alt={video.speaker}
-                      className="h-12 w-12 rounded-full"
+                      className="h-12 w-12 rounded-full object-cover"
                     />
                     <div className="ml-4">
                       <p className="font-medium text-gray-900">

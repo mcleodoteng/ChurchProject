@@ -7,6 +7,7 @@ import {
   ClockIcon,
   ChatBubbleLeftRightIcon,
 } from "@heroicons/react/24/outline";
+import { OptimizedImage } from "../Home";
 
 const FaithlineGeneration = () => {
   const activities = [
@@ -82,8 +83,8 @@ const FaithlineGeneration = () => {
         <div className="absolute inset-0">
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/90 to-blue-600/90" />
-            <img
-              src="/public/images/ministries/campus.jpg"
+            <OptimizedImage
+              src="/images/ministries/campus.jpg"
               alt="Faithline Generation"
               className="w-full h-full object-cover"
             />
@@ -216,7 +217,7 @@ const FaithlineGeneration = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold text-center mb-16">
             Weekly Schedule
-          </h2>
+          </h2>{" "}
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
             {[
               { day: "Monday", activity: "Prayer Meeting", time: "12:00 PM" },
@@ -235,7 +236,7 @@ const FaithlineGeneration = () => {
                 <div className="flex justify-between items-center">
                   <div>
                     <h3 className="font-bold text-lg">{item.day}</h3>
-                    <p className="text-gray-600">{item.activity}</p>
+                    <p className="text-gray-600">{item.activity}</p>{" "}
                   </div>
                   <span className="text-emerald-600 font-medium">
                     {item.time}

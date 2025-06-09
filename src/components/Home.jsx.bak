@@ -11,13 +11,10 @@ import {
 import { Link } from "react-router-dom";
 
 // Create an optimized image component
-const OptimizedImage = memo(({ src, alt, className }) => {
+export const OptimizedImage = memo(({ src, alt, className }) => {
   // Update path to use optimized images
   const getOptimizedPath = (src) => {
-    return src.replace(
-      "/images/ministries/",
-      "/images/ministries/optimized/optimized-"
-    );
+    return src.replace("/images/ministries/", "/images/ministries/optimized/optimized-");
   };
 
   return (
@@ -32,23 +29,38 @@ const OptimizedImage = memo(({ src, alt, className }) => {
 
 OptimizedImage.displayName = "OptimizedImage";
 
-// Export OptimizedImage component so it can be imported by other components
-export { OptimizedImage };
-
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
+  
   // Background Images - verified to exist in the directory
   const backgroundImages = [
     "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
     "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
     "/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
-    "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+    "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg"
   ].map((src) => {
     const img = new Image();
     img.src = src; // Preload images
     return src;
   });
+
+  // Slider images for the about section - reuse the same array to save memory
+  const sliderImages = backgroundImages;
+
+  const nextSlide = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length
+    );
+  };
+
+  useEffect(() => {
+    const timer = setInterval(nextSlide, 6000); // Reduced to 6 seconds for better engagement
+    return () => clearInterval(timer);
+  }, []);
 
   const [events] = useState([
     {
@@ -65,6 +77,7 @@ const Home = () => {
       time: "7:00 PM",
       image: "/images/ministries/women.jpg",
     },
+    // Add more events as needed
   ]);
 
   const [sermons] = useState([
@@ -82,25 +95,13 @@ const Home = () => {
       date: "April 7, 2025",
       image: "/images/ministries/campus.jpg",
     },
+    // Add more sermons as needed
   ]);
 
-  const nextSlide = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % backgroundImages.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentImageIndex(
-      (prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length
-    );
-  };
-
-  useEffect(() => {
-    const timer = setInterval(nextSlide, 6000);
-    return () => clearInterval(timer);
-  }, []);
-
   const containerVariants = {
-    offscreen: { perspective: 1000 },
+    offscreen: {
+      perspective: 1000,
+    },
     onscreen: {
       perspective: 1000,
       transition: {
@@ -344,7 +345,7 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Events Section */}
+      {/* Upcoming Events Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center">
@@ -585,7 +586,6 @@ const Home = () => {
       </footer>
     </div>
   );
-};
+});
 
-// Default export of the Home component
 export default Home;

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "../Home";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -43,21 +44,21 @@ const WomensFellowship = () => {
       description: "Weekly in-depth study of God's Word",
       schedule: "Every Wednesday",
       time: "10:00 AM & 7:00 PM",
-      image: "/public/images/ministries/women.jpg",
+      image: "/images/ministries/women.jpg",
     },
     {
       title: "Prayer Circle",
       description: "Monthly gathering for prayer and intercession",
       schedule: "First Friday",
       time: "6:30 PM",
-      image: "/public/images/ministries/women.jpg",
+      image: "/images/ministries/women.jpg",
     },
     {
       title: "Mentorship Program",
       description: "One-on-one discipleship and spiritual guidance",
       schedule: "Flexible Schedule",
       time: "By Appointment",
-      image: "/public/images/ministries/women.jpg",
+      image: "/images/ministries/women.jpg",
     },
   ];
 
@@ -82,8 +83,8 @@ const WomensFellowship = () => {
         <div className="absolute inset-0">
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-rose-500/90 to-purple-600/90" />
-            <img
-              src="/public/images/ministries/women.jpg"
+            <OptimizedImage
+              src="/images/ministries/women.jpg"
               alt="Living Spring"
               className="w-full h-full object-cover"
             />
@@ -176,7 +177,7 @@ const WomensFellowship = () => {
               >
                 <div className="relative h-48 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-r from-rose-500/80 to-purple-600/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <img
+                  <OptimizedImage
                     src={program.image}
                     alt={program.title}
                     className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "../Home";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -67,8 +68,8 @@ const MensFellowship = () => {
         <div className="absolute inset-0">
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-indigo-800/90" />
-            <img
-              src="/public/images/ministries/men.jpg"
+            <OptimizedImage
+              src="/images/ministries/men.jpg"
               alt="River of Life"
               className="w-full h-full object-cover"
             />

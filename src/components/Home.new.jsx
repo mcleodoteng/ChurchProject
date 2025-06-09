@@ -11,7 +11,7 @@ import {
 import { Link } from "react-router-dom";
 
 // Create an optimized image component
-const OptimizedImage = memo(({ src, alt, className }) => {
+export const OptimizedImage = memo(({ src, alt, className }) => {
   // Update path to use optimized images
   const getOptimizedPath = (src) => {
     return src.replace(
@@ -32,9 +32,6 @@ const OptimizedImage = memo(({ src, alt, className }) => {
 
 OptimizedImage.displayName = "OptimizedImage";
 
-// Export OptimizedImage component so it can be imported by other components
-export { OptimizedImage };
-
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -50,6 +47,7 @@ const Home = () => {
     return src;
   });
 
+  // Events with verified images
   const [events] = useState([
     {
       id: 1,
@@ -67,6 +65,7 @@ const Home = () => {
     },
   ]);
 
+  // Sermons with verified images
   const [sermons] = useState([
     {
       id: 1,
@@ -225,9 +224,7 @@ const Home = () => {
             <motion.h1
               variants={textVariants}
               className="text-5xl md:text-7xl font-bold mb-6 drop-shadow-2xl origin-left"
-              style={{
-                textShadow: "0 0 20px rgba(255,255,255,0.3)",
-              }}
+              style={{ textShadow: "0 0 20px rgba(255,255,255,0.3)" }}
             >
               Welcome Home
             </motion.h1>
@@ -257,94 +254,7 @@ const Home = () => {
         </div>
       </motion.section>
 
-      {/* DareToHope Section */}
-      <section className="bg-[#FDF8F6] py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-7xl mx-auto">
-            <div className="space-y-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-              >
-                <h2 className="text-4xl md:text-5xl font-bold mb-2">
-                  Ten services, Six sites,
-                </h2>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  One church,
-                </h2>
-                <p className="text-2xl md:text-3xl mb-4">
-                  In person and online; we'd love to see you!
-                </p>
-                <p className="text-lg text-gray-600 mb-8">
-                  For all. For London. Always.
-                </p>
-                <div className="mt-8">
-                  <Link
-                    to="/locations"
-                    className="inline-flex items-center bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors"
-                  >
-                    Find times and locations{" "}
-                    <ChevronRightIcon className="w-5 h-5 ml-2" />
-                  </Link>
-                </div>
-              </motion.div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="relative aspect-square max-w-md mx-auto">
-                <svg
-                  className="absolute inset-0 w-full h-full"
-                  viewBox="0 0 400 400"
-                >
-                  {/* Palm leaf decorative elements */}
-                  <path
-                    d="M200 50 C 300 100, 350 200, 350 300"
-                    stroke="#234F1E"
-                    strokeWidth="20"
-                    fill="none"
-                    className="palm-leaf"
-                  />
-                  <path
-                    d="M200 50 C 100 100, 50 200, 50 300"
-                    stroke="#3B82F6"
-                    strokeWidth="20"
-                    fill="none"
-                    className="palm-leaf"
-                  />
-                  <path
-                    d="M150 350 C 200 300, 250 300, 300 350"
-                    stroke="#F97316"
-                    strokeWidth="20"
-                    fill="none"
-                    className="palm-leaf"
-                  />
-                  {/* Central arch/window element */}
-                  <rect
-                    x="150"
-                    y="150"
-                    width="100"
-                    height="150"
-                    fill="#FDF8F6"
-                    rx="50"
-                  />
-                  {/* Rising sun element */}
-                  <circle cx="200" cy="250" r="25" fill="#F97316" />
-                </svg>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Events Section */}
+      {/* Upcoming Events Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-4xl font-bold mb-12 text-center">
@@ -424,30 +334,6 @@ const Home = () => {
               <p className="text-lg">11:30 AM</p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Donation CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-3xl mx-auto"
-          >
-            <h2 className="text-4xl font-bold mb-6">Support Our Ministry</h2>
-            <p className="text-xl mb-8">
-              Your generous giving helps us continue to impact lives and spread
-              God's love throughout our community.
-            </p>
-            <Link
-              to="/give"
-              className="inline-flex items-center bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-colors"
-            >
-              Give Now <ChevronRightIcon className="w-5 h-5 ml-2" />
-            </Link>
-          </motion.div>
         </div>
       </section>
 
@@ -587,5 +473,4 @@ const Home = () => {
   );
 };
 
-// Default export of the Home component
 export default Home;

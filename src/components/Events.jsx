@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "./Home";
 import {
   PhoneIcon,
   MapPinIcon,
@@ -58,7 +59,7 @@ const Events = () => {
       time: "9:00 AM & 11:30 AM",
       description:
         "Join us for a special Easter celebration with worship and fellowship.",
-      image: "/public/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+      image: "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
     },
     {
       id: 2,
@@ -67,7 +68,7 @@ const Events = () => {
       time: "Various Times",
       description:
         "Three days of worship, teaching, and community for young people.",
-      image: "/public/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+      image: "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
     },
     {
       id: 3,
@@ -76,8 +77,7 @@ const Events = () => {
       time: "10:00 AM",
       description:
         "Serving our local community through various outreach programs.",
-      image:
-        "/public/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+      image: "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
     },
   ];
 
@@ -101,12 +101,11 @@ const Events = () => {
       description: "See how we're making a difference in our community",
     },
   ];
-
   const galleryImages = [
-    "/public/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
-    "/public/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
-    "/public/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
-    "/public/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+    "/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+    "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+    "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+    "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
     // Add more images as needed
   ];
 
@@ -159,8 +158,9 @@ const Events = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] bg-black">
         <div className="absolute inset-0">
-          <img
-            src="/public/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
+          {" "}
+          <OptimizedImage
+            src="/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
             alt="Church events"
             className="w-full h-full object-cover opacity-50"
           />
@@ -192,24 +192,23 @@ const Events = () => {
             {upcomingEvents.map((event) => (
               <motion.div
                 key={event.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden group"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="bg-white rounded-lg shadow-lg overflow-hidden"
               >
-                <div className="relative h-48 overflow-hidden">
-                  <img
+                <div className="relative aspect-[16/9]">
+                  <OptimizedImage
                     src={event.image}
                     alt={event.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold mb-2">{event.title}</h3>
-                  <p className="text-blue-600 mb-2">
-                    {event.date} | {event.time}
+                  <h3 className="text-2xl font-semibold mb-2">{event.title}</h3>
+                  <p className="text-gray-600 mb-4">
+                    {event.date} - {event.time}
                   </p>
-                  <p className="text-gray-600">{event.description}</p>
+                  <p className="text-gray-700">{event.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -266,7 +265,7 @@ const Events = () => {
                 viewport={{ once: true }}
                 className="relative aspect-square overflow-hidden rounded-lg group"
               >
-                <img
+                <OptimizedImage
                   src={image}
                   alt={`Gallery image ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"

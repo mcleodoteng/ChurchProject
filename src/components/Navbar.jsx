@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { OptimizedImage } from "./Home";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -92,7 +93,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
               <div className="flex-shrink-0 w-12 h-12 mr-3">
-                <img
+                <OptimizedImage
                   src="/images/ministries/logo.jpg"
                   alt="Church Logo"
                   className="w-full h-full object-contain"
@@ -283,7 +284,7 @@ const Navbar = () => {
                       onClick={() => setIsMinistryOpen(false)}
                     >
                       <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
-                        <img
+                        <OptimizedImage
                           src={ministry.image}
                           alt={ministry.name}
                           className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-300"

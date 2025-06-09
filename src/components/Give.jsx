@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "./Home";
 import {
   MapPinIcon,
   PhoneIcon,
@@ -123,15 +124,15 @@ const Give = () => {
   return (
     <div className="min-h-screen pt-20 bg-gray-50">
       {/* Hero Section */}
-      <section className="relative h-[40vh] bg-black text-white overflow-hidden">
+      <section className="relative h-[60vh] overflow-hidden">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 0.8 }}
           className="absolute inset-0"
         >
-          <img
-            src="/public/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
+          <OptimizedImage
+            src="/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
             alt="Giving"
             className="w-full h-full object-cover opacity-50"
           />

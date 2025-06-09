@@ -5,4 +5,12 @@ export default {
     extend: {},
   },
   plugins: [],
+  mode: "jit",
+  purge: {
+    enabled: process.env.NODE_ENV === "production",
+    content: ["./src/**/*.{js,jsx,ts,tsx}", "./index.html"],
+    options: {
+      safelist: [/^animate-/, /^bg-/, /^text-/, /^border-/, /^from-/, /^to-/],
+    },
+  },
 };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link, useLocation } from "react-router-dom";
+import { OptimizedImage } from "./Home";
 import {
   PlayIcon,
   MapPinIcon,
@@ -96,11 +97,12 @@ const Watch = () => {
       {/* Hero Section */}
       <section className="relative bg-blue-600 text-white py-24">
         <div className="absolute inset-0 overflow-hidden">
-          <img
+          <OptimizedImage
             src="/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
             alt="Watch Background"
-            className="w-full h-full object-cover opacity-20"
+            className="w-full h-full object-cover"
           />
+          <div className="absolute inset-0 bg-black/50"></div>
         </div>
         <div className="relative container mx-auto px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 text-center">
@@ -115,54 +117,32 @@ const Watch = () => {
       {/* Content Section */}
       <div className="container mx-auto px-4 py-12">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {videos.map((video, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-6">
+            {videos.map((video) => (
               <motion.div
-                key={video.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 + 0.2 }}
-                className="bg-white rounded-lg shadow-lg overflow-hidden group"
+                key={video.videoId}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => handleVideoClick(video)}
+                className="cursor-pointer bg-white rounded-lg shadow-lg overflow-hidden"
               >
-                <div className="relative">
-                  <img
+                <div className="relative aspect-video">
+                  <OptimizedImage
                     src={video.thumbnail}
                     alt={video.title}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <motion.button
-                        onClick={() => handleVideoClick(video)}
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="w-16 h-16 bg-white rounded-full flex items-center justify-center"
-                      >
-                        <PlayIcon className="w-8 h-8 text-blue-600" />
-                      </motion.button>
-                    </div>
-                  </div>
-                  <div className="absolute bottom-2 right-2 bg-black bg-opacity-70 px-2 py-1 rounded text-white text-sm">
-                    {video.duration}
+                  <div className="absolute inset-0 bg-black/20 flex items-center justify-center group-hover:bg-black/40 transition-colors">
+                    <PlayIcon className="w-16 h-16 text-white opacity-80 group-hover:opacity-100 transition-opacity" />
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-4">
                   <h3 className="text-xl font-semibold mb-2">{video.title}</h3>
-                  <p className="text-gray-600 mb-4">{video.description}</p>
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-sm font-medium text-gray-900">
-                        {video.speaker}
-                      </p>
-                      <p className="text-xs text-gray-500">{video.date}</p>
-                    </div>
-                    <button
-                      onClick={() => handleVideoClick(video)}
-                      className="text-blue-600 hover:text-blue-800 font-medium"
-                    >
-                      Watch Now →
-                    </button>
-                  </div>
+                  <p className="text-gray-600 text-sm mb-2">
+                    {video.date} • {video.duration}
+                  </p>
+                  <p className="text-gray-700">{video.description}</p>
+                  <p className="text-gray-600 mt-2 text-sm">{video.speaker}</p>
                 </div>
               </motion.div>
             ))}

@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { OptimizedImage } from "./Home";
 import {
   PhoneIcon,
   MapPinIcon,
@@ -372,58 +373,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <motion.h2
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-4xl font-bold text-center mb-16"
-          >
-            Our Core Values
-          </motion.h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="bg-white p-8 rounded-lg shadow-lg"
-            >
-              <h3 className="text-2xl font-bold mb-4">Faith</h3>
-              <p className="text-gray-600">
-                Unwavering trust in God's promises and guidance in all we do.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="bg-white p-8 rounded-lg shadow-lg"
-            >
-              <h3 className="text-2xl font-bold mb-4">Community</h3>
-              <p className="text-gray-600">
-                Foster genuine relationships and support one another in love.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ y: 30, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6 }}
-              className="bg-white p-8 rounded-lg shadow-lg"
-            >
-              <h3 className="text-2xl font-bold mb-4">Service</h3>
-              <p className="text-gray-600">
-                Demonstrate God's love through action and compassionate service.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* Leadership Team Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -446,7 +395,7 @@ const About = () => {
                 className="text-center"
               >
                 <BlobBorder index={index}>
-                  <img
+                  <OptimizedImage
                     src={member.image}
                     alt={member.name}
                     className="w-full h-full object-cover"
@@ -469,7 +418,7 @@ const About = () => {
         >
           {sliderImages.map((image, index) => (
             <div key={index} className="min-w-full h-full">
-              <img
+              <OptimizedImage
                 src={image}
                 alt={`Church life ${index + 1}`}
                 className="w-full h-full object-cover"
