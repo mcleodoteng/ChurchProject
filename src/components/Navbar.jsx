@@ -39,29 +39,28 @@ const Navbar = () => {
     {
       name: "Living Spring",
       path: "/ministries/women",
-      image: "/images/ministries/women.jpg",
+      image: "/images/ministries/img (5).JPG",
       description: "Living Spring's Fellowship Ministry",
     },
     {
       name: "Faithline Generation",
       path: "/ministries/campus",
-      image: "/images/ministries/campus.jpg",
+      image: "/images/ministries/img (8).JPG",
       description: "Faithline Generation's Campus Ministry",
     },
     {
       name: "River of Life",
       path: "/ministries/men",
-      image: "/images/ministries/men.jpg",
+      image: "/images/ministries/img (1).jpg",
       description: "River of Life's Fellowship Ministry",
     },
     {
       name: "Overcomers",
       path: "/ministries/youth",
-      image: "/images/ministries/youth.jpg",
+      image: "/images/ministries/img (7).JPG",
       description: "Overcomers' Ministry",
     },
   ];
-
   const learnItems = [
     {
       name: "Read",
@@ -74,6 +73,39 @@ const Navbar = () => {
       path: "/watch",
       description: "Stream services and events",
       icon: PlayIcon,
+    },
+    {
+      name: "Listen",
+      path: "/listen",
+      description: "Sermons and teachings podcast",
+      icon: ({ className }) => (
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          className={className}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 17.5v-15"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M5 19h14"
+          />
+        </svg>
+      ),
     },
   ];
 
@@ -316,8 +348,9 @@ const Navbar = () => {
             transition={{ duration: 0.2 }}
             className="fixed top-20 left-0 w-full bg-black/95 backdrop-blur-sm z-40"
           >
+            {" "}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {learnItems.map((item) => (
                   <motion.div
                     key={item.name}

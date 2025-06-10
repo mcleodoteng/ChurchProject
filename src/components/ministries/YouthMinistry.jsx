@@ -63,7 +63,7 @@ const YouthMinistry = () => {
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-purple-600/90 to-pink-500/90" />
             <OptimizedImage
-              src="/images/ministries/youth.jpg"
+              src="/images/ministries/img (3).jpg"
               alt="Youth Ministry"
               className="w-full h-full object-cover"
             />
@@ -151,7 +151,7 @@ const YouthMinistry = () => {
                     />
                   </div>
                   <div className="ml-4">
-                    <h3 className="font-semibold text-lg">
+                    <h3 className="font-semibold text-lg text-neutral-800">
                       {testimonial.name}
                     </h3>
                     <p className="text-gray-600">{testimonial.age} years old</p>

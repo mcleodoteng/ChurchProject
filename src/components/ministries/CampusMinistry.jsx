@@ -84,7 +84,7 @@ const FaithlineGeneration = () => {
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/90 to-blue-600/90" />
             <OptimizedImage
-              src="/images/ministries/campus.jpg"
+              src="/images/ministries/img (10).JPG"
               alt="Faithline Generation"
               className="w-full h-full object-cover"
             />

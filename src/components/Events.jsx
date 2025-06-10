@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Link } from "react-router-dom";
 import { OptimizedImage } from "./Home";
+import ImageGallery from "./ImageGallery";
 import {
   PhoneIcon,
   MapPinIcon,
@@ -59,7 +60,7 @@ const Events = () => {
       time: "9:00 AM & 11:30 AM",
       description:
         "Join us for a special Easter celebration with worship and fellowship.",
-      image: "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+      image: "/images/ministries/img (2).jpg",
     },
     {
       id: 2,
@@ -68,7 +69,7 @@ const Events = () => {
       time: "Various Times",
       description:
         "Three days of worship, teaching, and community for young people.",
-      image: "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+      image: "/images/ministries/img (8).JPG",
     },
     {
       id: 3,
@@ -77,7 +78,7 @@ const Events = () => {
       time: "10:00 AM",
       description:
         "Serving our local community through various outreach programs.",
-      image: "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+      image: "/images/ministries/img (7).JPG",
     },
   ];
 
@@ -102,11 +103,94 @@ const Events = () => {
     },
   ];
   const galleryImages = [
-    "/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
-    "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
-    "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
-    "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
-    // Add more images as needed
+    {
+      src: "/images/ministries/img (2).jpg",
+      title: "Easter Sunday Service",
+      date: "April 27, 2025",
+      subImages: [
+        {
+          src: "/images/ministries/img (6).JPG",
+          title: "Morning Worship",
+          date: "April 27, 2025",
+        },
+        {
+          src: "/images/ministries/img (4).JPG",
+          title: "Communion Service",
+          date: "April 27, 2025",
+        },
+        {
+          src: "/images/ministries/img (3).jpg",
+          title: "Fellowship Time",
+          date: "April 27, 2025",
+        },
+      ],
+    },
+    {
+      src: "/images/ministries/img (8).JPG",
+      title: "Youth Conference",
+      date: "May 3-5, 2025",
+      subImages: [
+        {
+          src: "/images/ministries/img (1).jpg",
+          title: "Opening Session",
+          date: "May 3, 2025",
+        },
+        {
+          src: "/images/ministries/youth.jpg",
+          title: "Group Activities",
+          date: "May 4, 2025",
+        },
+        {
+          src: "/images/ministries/img (9).JPG",
+          title: "Youth Workshop",
+          date: "May 5, 2025",
+        },
+      ],
+    },
+    {
+      src: "/images/ministries/img (7).JPG",
+      title: "Community Outreach",
+      date: "May 10, 2025",
+      subImages: [
+        {
+          src: "/images/ministries/img (5).JPG",
+          title: "Food Distribution",
+          date: "May 10, 2025",
+        },
+        {
+          src: "/images/ministries/img (10).JPG",
+          title: "Medical Camp",
+          date: "May 10, 2025",
+        },
+        {
+          src: "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
+          title: "Community Service",
+          date: "May 10, 2025",
+        },
+      ],
+    },
+    {
+      src: "/images/ministries/campus.jpg",
+      title: "Campus Ministry",
+      date: "June 1, 2025",
+      subImages: [
+        {
+          src: "/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+          title: "Bible Study",
+          date: "June 1, 2025",
+        },
+        {
+          src: "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+          title: "Prayer Meeting",
+          date: "June 1, 2025",
+        },
+        {
+          src: "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
+          title: "Fellowship",
+          date: "June 1, 2025",
+        },
+      ],
+    },
   ];
 
   const handlePrayerFormSubmit = async (e) => {
@@ -160,7 +244,7 @@ const Events = () => {
         <div className="absolute inset-0">
           {" "}
           <OptimizedImage
-            src="/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
+            src="/images/ministries/img (6).JPG"
             alt="Church events"
             className="w-full h-full object-cover opacity-50"
           />
@@ -253,26 +337,18 @@ const Events = () => {
       {/* Gallery Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-16">
-            Event Gallery
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {galleryImages.map((image, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                className="relative aspect-square overflow-hidden rounded-lg group"
-              >
-                <OptimizedImage
-                  src={image}
-                  alt={`Gallery image ${index + 1}`}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </motion.div>
-            ))}
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center mb-16"
+          >
+            <h2 className="text-4xl font-bold mb-4">Event Gallery</h2>
+            <p className="text-gray-600 text-lg">
+              Explore moments from our recent events and gatherings
+            </p>
+          </motion.div>
+          <ImageGallery images={galleryImages} />
         </div>
       </section>
 

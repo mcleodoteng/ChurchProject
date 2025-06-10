@@ -132,7 +132,7 @@ const Give = () => {
           className="absolute inset-0"
         >
           <OptimizedImage
-            src="/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
+            src="/images/ministries/img (10).JPG"
             alt="Giving"
             className="w-full h-full object-cover opacity-50"
           />

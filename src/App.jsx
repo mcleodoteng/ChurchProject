@@ -12,6 +12,7 @@ const Events = lazy(() => import("./components/Events"));
 const Give = lazy(() => import("./components/Give"));
 const Read = lazy(() => import("./components/Read"));
 const Watch = lazy(() => import("./components/Watch"));
+const Listen = lazy(() => import("./components/Listen"));
 const YouthMinistry = lazy(() =>
   import("./components/ministries/YouthMinistry")
 );
@@ -99,6 +100,14 @@ function App() {
           element={
             <Layout>
               <Watch />
+            </Layout>
+          }
+        />
+        <Route
+          path="/listen"
+          element={
+            <Layout>
+              <Listen />
             </Layout>
           }
         />

@@ -69,7 +69,7 @@ const MensFellowship = () => {
           <div className="h-full w-full">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-indigo-800/90" />
             <OptimizedImage
-              src="/images/ministries/men.jpg"
+              src="/images/ministries/img (1).jpg"
               alt="River of Life"
               className="w-full h-full object-cover"
             />

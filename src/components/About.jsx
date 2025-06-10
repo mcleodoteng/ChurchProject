@@ -125,9 +125,9 @@ const About = () => {
   ];
 
   const sliderImages = [
-    "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
-    "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
-    "/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
+    "/images/ministries/img (9).JPG",
+    "/images/ministries/img (1).jpg",
+    "/images/ministries/img (3).jpg",
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -151,7 +151,7 @@ const About = () => {
           className="absolute inset-0"
         >
           <img
-            src="/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg"
+            src="/images/ministries/img (10).JPG"
             alt="Church gathering"
             className="w-full h-full object-cover opacity-50"
           />

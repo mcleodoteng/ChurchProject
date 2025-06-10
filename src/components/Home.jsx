@@ -40,10 +40,10 @@ const Home = () => {
 
   // Background Images - verified to exist in the directory
   const backgroundImages = [
-    "/images/ministries/kabila-haile-FPIQ3jyCsK8-unsplash.jpg",
-    "/images/ministries/ayodele-adeniyi-PaanyDCZcwg-unsplash.jpg",
-    "/images/ministries/betzy-arosemena-ELItsm8MDtM-unsplash.jpg",
-    "/images/ministries/kemi-taiwo-sLKAq9Vajys-unsplash.jpg",
+    "/images/ministries/img (2).jpg",
+    "/images/ministries/img (3).jpg",
+    "/images/ministries/img (1).jpg",
+    "/images/ministries/img (5).JPG",
   ].map((src) => {
     const img = new Image();
     img.src = src; // Preload images
@@ -56,14 +56,14 @@ const Home = () => {
       title: "Sunday Service",
       date: "Every Sunday",
       time: "9:00 AM & 11:30 AM",
-      image: "/images/ministries/men.jpg",
+      image: "/images/ministries/img (10).JPG",
     },
     {
       id: 2,
       title: "Youth Night",
       date: "Every Friday",
       time: "7:00 PM",
-      image: "/images/ministries/women.jpg",
+      image: "/images/ministries/img (8).JPG",
     },
   ]);
 
@@ -73,14 +73,14 @@ const Home = () => {
       title: "Walking in Faith",
       speaker: "Pastor John Doe",
       date: "April 14, 2025",
-      image: "/images/ministries/youth.jpg",
+      image: "/images/ministries/img (4).JPG",
     },
     {
       id: 2,
       title: "The Power of Prayer",
       speaker: "Pastor Jane Smith",
       date: "April 7, 2025",
-      image: "/images/ministries/campus.jpg",
+      image: "/images/ministries/img (5).JPG",
     },
   ]);
 
@@ -269,7 +269,7 @@ const Home = () => {
                 transition={{ duration: 0.6 }}
               >
                 <h2 className="text-4xl md:text-5xl font-bold mb-2">
-                  Ten services, Six sites,
+                  Four services, One site,
                 </h2>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
                   One church,
