@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { OptimizedImage } from "./Home";
-import {  PlayIcon,
+import {
+  PlayIcon,
   PauseIcon,
   ForwardIcon,
   BackwardIcon,
@@ -269,7 +270,9 @@ const Listen = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40"
-          >            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
+          >
+            {" "}
+            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
               <OptimizedImage
                 src={currentPodcast.image}
                 alt={currentPodcast.title}
