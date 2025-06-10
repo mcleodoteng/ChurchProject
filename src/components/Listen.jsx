@@ -2,8 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { OptimizedImage } from "./Home";
-import {
-  PlayIcon,
+import {  PlayIcon,
   PauseIcon,
   ForwardIcon,
   BackwardIcon,
@@ -16,6 +15,7 @@ import {
   ClockIcon,
   ChatBubbleLeftRightIcon,
   SpeakerWaveIcon,
+  XMarkIcon,
 } from "@heroicons/react/24/outline";
 import {
   HeartIcon as HeartSolidIcon,
@@ -247,7 +247,9 @@ const Listen = () => {
                   </div>
                   <p className="text-gray-700 mb-4">{podcast.description}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">{podcast.date}</span>
+                    <span className="text-sm text-gray-500">
+                      {podcast.date}
+                    </span>
                     <span className="text-xs text-blue-600 bg-blue-100 px-3 py-1 rounded-full">
                       {podcast.series}
                     </span>
@@ -267,8 +269,7 @@ const Listen = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             className="fixed bottom-0 left-0 right-0 bg-white border-t shadow-lg z-40"
-          >
-            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
+          >            <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-4">
               <OptimizedImage
                 src={currentPodcast.image}
                 alt={currentPodcast.title}
@@ -281,6 +282,15 @@ const Listen = () => {
                 </p>
               </div>
               <div className="flex items-center gap-4">
+                <button
+                  onClick={() => {
+                    setCurrentPodcast(null);
+                    setIsPlaying(false);
+                  }}
+                  className="p-2 hover:bg-gray-100 rounded-full text-gray-500 hover:text-gray-700"
+                >
+                  <XMarkIcon className="h-6 w-6" />
+                </button>
                 <button className="p-2 hover:bg-gray-100 rounded-full">
                   <BackwardIcon className="h-6 w-6 text-gray-700" />
                 </button>

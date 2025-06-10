@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { OptimizedImage } from "./Home";
 import {
@@ -11,27 +11,12 @@ const ImageGallery = ({ images }) => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedMainImage, setSelectedMainImage] = useState(null);
-  const [expandedGroups, setExpandedGroups] = useState(new Set());
-
-  // Flatten images array to include subImages
-  const flattenedImages = images.reduce((acc, image) => {
-    acc.push(image);
-    if (image.subImages) {
-      acc.push(
-        ...image.subImages.map((subImage) => ({
-          ...subImage,
-          mainImage: image,
-        }))
-      );
-    }
-    return acc;
-  }, []);
+  const [showingSubImages, setShowingSubImages] = useState(false);
 
   const openModal = (image, index) => {
-    const mainImage = image.mainImage || image;
-    setSelectedMainImage(mainImage);
+    setSelectedMainImage(image);
     setSelectedImage(image);
-    setCurrentIndex(index);
+    setCurrentIndex(0);
     document.body.style.overflow = "hidden";
   };
 
@@ -43,13 +28,11 @@ const ImageGallery = ({ images }) => {
   };
 
   const navigateImage = (direction) => {
+    const currentGroup = [selectedMainImage, ...selectedMainImage.subImages];
     const newIndex = currentIndex + direction;
-    if (newIndex >= 0 && newIndex < flattenedImages.length) {
+    if (newIndex >= 0 && newIndex < currentGroup.length) {
       setCurrentIndex(newIndex);
-      setSelectedImage(flattenedImages[newIndex]);
-      setSelectedMainImage(
-        flattenedImages[newIndex].mainImage || flattenedImages[newIndex]
-      );
+      setSelectedImage(currentGroup[newIndex]);
     }
   };
 
@@ -62,17 +45,15 @@ const ImageGallery = ({ images }) => {
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
-        {flattenedImages.map((image, index) => (
+        {images.map((image, index) => (
           <motion.div
-            key={`${image.src}-${index}`}
+            key={index}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: index * 0.1 }}
             className={`relative overflow-hidden rounded-lg cursor-pointer group 
-              ${
-                (index % 5 === 0 && !image.mainImage) ? "md:col-span-2 md:row-span-2" : ""
-              }`}
+              ${index % 5 === 0 ? "md:col-span-2 md:row-span-2" : ""}`}
             onClick={() => openModal(image, index)}
           >
             <OptimizedImage
@@ -141,42 +122,71 @@ const ImageGallery = ({ images }) => {
                     navigateImage(1);
                   }}
                   className="bg-white/10 text-white p-2 rounded-l-lg hover:bg-white/20 transition-colors disabled:opacity-50"
-                  disabled={currentIndex === flattenedImages.length - 1}
+                  disabled={
+                    currentIndex ===
+                    (selectedMainImage.subImages
+                      ? selectedMainImage.subImages.length
+                      : 0)
+                  }
                 >
                   <ChevronRightIcon className="h-8 w-8" />
                 </button>
               </div>
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent">
                 <div className="p-4 text-white text-center">
-                  <h3 className="text-xl font-semibold">{selectedImage.title}</h3>
+                  <h3 className="text-xl font-semibold">
+                    {selectedImage.title}
+                  </h3>
                   <p className="text-sm opacity-80">{selectedImage.date}</p>
                   <p className="mt-2 text-sm font-medium">
-                    Photo {currentIndex + 1} of {flattenedImages.length}
+                    Photo {currentIndex + 1} of{" "}
+                    {selectedMainImage.subImages
+                      ? selectedMainImage.subImages.length + 1
+                      : 1}
                   </p>
                 </div>
-                <div className="flex gap-2 p-4 overflow-x-auto pb-6 justify-center">
-                  {flattenedImages.map((image, idx) => (
+                {selectedMainImage.subImages && (
+                  <div className="flex gap-2 p-4 overflow-x-auto pb-6 justify-center">
                     <div
-                      key={idx}
+                      key="main"
                       onClick={() => {
-                        setCurrentIndex(idx);
-                        setSelectedImage(image);
-                        setSelectedMainImage(image.mainImage || image);
+                        setCurrentIndex(0);
+                        setSelectedImage(selectedMainImage);
                       }}
                       className={`w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-colors cursor-pointer ${
-                        currentIndex === idx
+                        currentIndex === 0
                           ? "border-white"
                           : "border-transparent"
                       }`}
                     >
                       <OptimizedImage
-                        src={image.src}
-                        alt={image.title}
+                        src={selectedMainImage.src}
+                        alt={selectedMainImage.title}
                         className="w-full h-full object-cover"
                       />
                     </div>
-                  ))}
-                </div>
+                    {selectedMainImage.subImages.map((subImage, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => {
+                          setCurrentIndex(idx + 1);
+                          setSelectedImage(subImage);
+                        }}
+                        className={`w-20 h-20 flex-shrink-0 rounded-lg overflow-hidden border-2 transition-colors cursor-pointer ${
+                          currentIndex === idx + 1
+                            ? "border-white"
+                            : "border-transparent"
+                        }`}
+                      >
+                        <OptimizedImage
+                          src={subImage.src}
+                          alt={subImage.title}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             </motion.div>
           </motion.div>

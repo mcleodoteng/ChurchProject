@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import PerformanceMetrics from "./components/PerformanceMetrics";
 import "./index.css";
 
 // Lazy load other components
@@ -39,7 +38,6 @@ const Layout = ({ children }) => (
     <Suspense fallback={<Loading />}>
       <main>{children}</main>
     </Suspense>
-    {process.env.NODE_ENV === "development" && <PerformanceMetrics />}
   </>
 );
 
