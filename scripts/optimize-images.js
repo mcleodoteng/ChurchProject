@@ -1,13 +1,13 @@
 import sharp from "sharp";
 import { promises as fs } from "fs";
-import { join, dirname } from "path";
+import path from "path";
 import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const __dirname = path.dirname(__filename);
 
-const imageDir = join(__dirname, "../public/images/ministries");
-const optimizedDir = join(__dirname, "../public/images/ministries/optimized");
+const imageDir = path.join(__dirname, "..", "public", "images", "ministries");
+const optimizedDir = path.join(imageDir, "optimized");
 
 async function optimizeImages() {
   try {
@@ -18,27 +18,51 @@ async function optimizeImages() {
     const files = await fs.readdir(imageDir);
 
     for (const file of files) {
-      if (file.match(/\.(jpg|jpeg|png)$/i)) {
-        const inputPath = join(imageDir, file);
-        const outputPath = join(optimizedDir, `optimized-${file}`);
+      // Skip the optimized directory itself
+      if (file === "optimized") continue;
 
-        // Optimize image
-        await sharp(inputPath)
-          .resize(1200, 800, {
-            // Set reasonable max dimensions
-            fit: "inside",
-            withoutEnlargement: true,
-          })
-          .jpeg({ quality: 80, progressive: true }) // Use progressive JPEGs
-          .toFile(outputPath);
+      // Check if file is an image
+      if (file.match(/\.(jpg|jpeg|png|JPG|JPEG|PNG)$/i)) {
+        const inputPath = path.join(imageDir, file);
+        const outputPath = path.join(optimizedDir, `optimized-${file}`);
 
-        console.log(`Optimized: ${file}`);
+        try {
+          // Check if file exists and is readable
+          await fs.access(inputPath);
+
+          // Get file stats
+          const stats = await fs.stat(inputPath);
+          if (!stats.isFile()) continue;
+
+          // Optimize image
+          await sharp(inputPath)
+            .resize(1200, 800, {
+              fit: "inside",
+              withoutEnlargement: true,
+            })
+            .jpeg({
+              quality: 80,
+              progressive: true,
+              force: false, // Don't force JPEG for PNG files
+            })
+            .png({
+              quality: 80,
+              progressive: true,
+              force: false, // Don't force PNG for JPEG files
+            })
+            .toFile(outputPath);
+
+          console.log(`✓ Optimized: ${file}`);
+        } catch (err) {
+          console.error(`× Failed to optimize ${file}:`, err.message);
+        }
       }
     }
 
-    console.log("Image optimization complete!");
+    console.log("\n✨ Image optimization complete!");
   } catch (error) {
-    console.error("Error optimizing images:", error);
+    console.error("Error during optimization process:", error);
+    process.exit(1);
   }
 }
 

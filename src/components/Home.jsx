@@ -240,7 +240,7 @@ const Home = () => {
               Experience God's love in a fresh way.
             </motion.p>
 
-            <motion.button
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               whileHover={{
@@ -249,10 +249,14 @@ const Home = () => {
               }}
               whileTap={{ scale: 0.95 }}
               transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
-              className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all flex items-center gap-2 w-fit"
             >
-              Plan Your Visit <ChevronRightIcon className="w-5 h-5" />
-            </motion.button>
+              <Link
+                to="/ministries"
+                className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 transition-all flex items-center gap-2 w-fit"
+              >
+                Plan Your Visit <ChevronRightIcon className="w-5 h-5" />
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </motion.section>
@@ -282,7 +286,7 @@ const Home = () => {
                 </p>
                 <div className="mt-8">
                   <Link
-                    to="/locations"
+                    to="/ministries"
                     className="inline-flex items-center bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-colors"
                   >
                     Find times and locations{" "}

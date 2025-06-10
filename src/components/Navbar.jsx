@@ -126,7 +126,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0 w-12 h-12 mr-3">
                 <OptimizedImage
-                  src="/images/ministries/logo.jpg"
+                  src="/images/ministries/logo.png"
                   alt="Church Logo"
                   className="w-full h-full object-contain"
                 />
